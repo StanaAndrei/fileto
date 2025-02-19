@@ -1,0 +1,33 @@
+cabal-version:      3.0
+name:               fileto
+version:            0.1.0.0
+license:            BSD-3-Clause
+license-file:       LICENSE
+author:             StanaAndrei
+maintainer:         stadey33@gmail.com
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+
+common warnings
+    ghc-options: -Wall
+
+library
+    import:           warnings
+    exposed-modules:  Cip.Vig
+                     Util.Rand
+                     Util.Time
+    build-depends:    base ^>=4.17.2.1,
+                     random,
+                     time
+    hs-source-dirs:   app
+    default-language: GHC2021
+
+executable fileto
+    import:           warnings
+    main-is:          Main.hs
+    build-depends:    base ^>=4.17.2.1,
+                     fileto,
+                     random,
+                     time
+    hs-source-dirs:   app
+    default-language: GHC2021

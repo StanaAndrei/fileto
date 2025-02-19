@@ -10,3 +10,4 @@ main = do
   print $ Vig.decrypt "mskf sl, hseo!" "key1"
   randomStr <- generateRandomLengthString
   putStrLn randomStr
+  print "Works123!"

@@ -35,3 +35,9 @@ executable fileto
                      containers
     hs-source-dirs:   app
     default-language: GHC2021
+    other-modules:
+        Cip.Beau
+        Cip.BeauMat
+        Cip.Vig
+        Util.Rand
+        Util.Time

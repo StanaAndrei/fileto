@@ -1,5 +1,4 @@
-import System.Environment (getArgs)
-import System.IO (readFile, writeFile)
+-- import System.Environment (getArgs)
 
 import qualified Cip.Vig as Vig
 import qualified Cip.Beau as Beau
@@ -15,7 +14,7 @@ writeMatrixToFile filepath = do
 
 main :: IO()
 main = do
-  print $ Vig.decrypt "mskf sl, hseo!" "key1"
+  print $ Vig.decrypt "mskf sl, hseo!!" "key1"
   randomStr <- generateRandomLengthString
   putStrLn randomStr
   writeMatrixToFile "mat.txt"

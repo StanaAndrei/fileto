@@ -9,9 +9,9 @@ import Util.Rand (generateRandomLengthString)
 
 writeMatrixToFile :: FilePath -> IO ()
 writeMatrixToFile filepath = do
-    let matrix = generateMatrix
-    writeFile filepath (formatMatrix matrix)
-    putStrLn $ "Beaufort cipher matrix key has been written to " ++ filepath
+  let matrix = generateMatrix
+  writeFile filepath (formatMatrix matrix)
+  putStrLn $ "Beaufort cipher matrix key has been written to " ++ filepath
 
 main :: IO()
 main = do

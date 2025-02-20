@@ -5,6 +5,7 @@ module Cip.BeauMat(
 
 import Data.Char (ord, chr)
 import System.IO
+import Util.Rand (shuffleString)
 
 indexToChar :: Int -> Char
 indexToChar n
@@ -19,8 +20,8 @@ charToIndex c
 generateRow :: Int -> String
 generateRow offset = [indexToChar ((n + offset) `mod` 36) | n <- [0..35]]
 
-generateMatrix :: [String]
-generateMatrix = [generateRow n | n <- [0..35]]
+generateMatrix :: IO [String]
+generateMatrix = mapM (shuffleString . generateRow) [0..35]
 
 formatMatrix :: [String] -> String
 formatMatrix = unlines

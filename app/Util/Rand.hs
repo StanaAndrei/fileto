@@ -1,9 +1,10 @@
 module Util.Rand(
-  generateRandomLengthString
+  generateRandomLengthString,
+  shuffleString,
 ) where
 
 import System.Random
-import Util.Time (getCurrentTimeAsInt)
+
 
 low :: Int
 low = 5
@@ -27,3 +28,15 @@ generateRandomLengthString :: IO String
 generateRandomLengthString = do
   randomLength <- randomRIO (low, high)
   generateString randomLength
+
+shuffleString :: String -> IO String
+shuffleString [] = return []
+shuffleString [x] = return [x]
+shuffleString xs = do
+    i <- randomRIO (0, length xs - 1)
+    let (left, right) = splitAt i xs
+    case right of
+        [] -> shuffleString xs --should not happen
+        (c:rest) -> do
+            remaining <- shuffleString (left ++ rest)
+            return (c : remaining)

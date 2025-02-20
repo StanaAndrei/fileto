@@ -18,6 +18,7 @@ library
                      Util.Time
                      Cip.BeauMat
                      Cip.Beau
+                     Argacts
     build-depends:    base ^>=4.17.2.1,
                      random,
                      time,
@@ -41,3 +42,4 @@ executable fileto
         Cip.Vig
         Util.Rand
         Util.Time
+        Argacts

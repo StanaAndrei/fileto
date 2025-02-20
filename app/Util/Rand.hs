@@ -1,6 +1,7 @@
 module Util.Rand(
   generateRandomLengthString,
   shuffleString,
+  generateString,
 ) where
 
 import System.Random

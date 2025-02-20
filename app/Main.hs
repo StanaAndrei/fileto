@@ -20,7 +20,7 @@ main = do
   print "Works123!"
   writeMatrixToFile "mat.txt"
 
-  encrypted <- Beau.encrypt "mat.txt" "HELLO123"
+  encrypted <- Beau.encrypt "mat.txt" "HELLO dude 123!!"
   putStrLn $ "Encrypted: " ++ encrypted
     
   decrypted <- Beau.decrypt "mat.txt" encrypted

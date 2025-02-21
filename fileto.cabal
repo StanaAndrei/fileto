@@ -19,10 +19,17 @@ library
                      Cip.BeauMat
                      Cip.Beau
                      Argacts
+                     Comp.Huffman
+                     Comp.Defs
+                     Comp.BitArr
+                     Comp.FileUtils
+                     Comp.OptBinTree
     build-depends:    base ^>=4.17.2.1,
                      random,
                      time,
-                     containers
+                     containers,
+                     bytestring,
+                     split
     hs-source-dirs:   app
     default-language: GHC2021
 
@@ -33,7 +40,9 @@ executable fileto
                      fileto,
                      random,
                      time,
-                     containers
+                     containers,
+                     bytestring,
+                     split
     hs-source-dirs:   app
     default-language: GHC2021
     other-modules:
@@ -43,3 +52,8 @@ executable fileto
         Util.Rand
         Util.Time
         Argacts
+        Comp.Huffman
+        Comp.Defs
+        Comp.BitArr
+        Comp.FileUtils
+        Comp.OptBinTree

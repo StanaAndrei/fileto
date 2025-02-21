@@ -1,2 +1,6 @@
 dist-newstyle
 *.txt
+*.png
+*.jpg
+*.jpeg
+*.hc

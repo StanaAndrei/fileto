@@ -2,6 +2,8 @@ module Argacts where
 
 import Util.Rand (generateRandomLengthString, generateString)
 import qualified Cip.Vig as Vig
+import qualified Cip.Beau as Beau
+import Cip.BeauMat (generateMatrix, formatMatrix)
 
 import System.Exit (exitFailure)
 import qualified Data.ByteString as B
@@ -72,3 +74,30 @@ huffmanDecode infile = do
           decodedBytes = decodeTree tree bits
       B.writeFile outFilename (B.pack decodedBytes)
       putStrLn $ "Decoded file written to " ++ outFilename
+
+bEncrypt :: FilePath -> FilePath -> FilePath -> IO ()
+bEncrypt infile outfile keyfile = do
+  original <- readFile infile
+  encrypted <- Beau.encrypt keyfile original
+  writeFile outfile encrypted
+
+bDecrypt :: FilePath -> FilePath -> FilePath -> IO ()
+bDecrypt infile outfile keyfile = do
+  encrypted <- readFile infile
+  original <- Beau.decrypt keyfile encrypted
+  writeFile outfile original
+
+writeMatrixToFile :: FilePath -> IO ()
+writeMatrixToFile filepath = do
+  matrix <- generateMatrix
+  writeFile filepath (formatMatrix matrix)
+  putStrLn $ "Beaufort cipher matrix key has been written to " ++ filepath
+
+
+printUsage :: IO ()
+printUsage = putStrLn $ unlines [ "Usage:",
+  "Generate a random key:                 --gen-key",
+  "Generate a random key of fixed size:   --gen-key <size>",
+  "Generate a random 2d key:              --gen-key-mat <key_file>",
+  "Viginere/Beaufort encrypt/decrypt:     --v/b-enc/dec --in-file <infile> --out-file <outfile> --key(-file) <key(_file)>",
+  "Compress/Decompress file:              --compress/extract <file>" ]

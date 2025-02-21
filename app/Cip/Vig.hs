@@ -9,7 +9,7 @@ shiftChar :: Char -> Int -> Char
 shiftChar c key
   | isAlpha c = shiftAlpha c key
   | isDigit c = shiftDigit c key
-  | otherwise = c -- Leave non-alphanumeric characters unchanged
+  | otherwise = c -- Leave !alphanumeric characters unchanged
 
 shiftAlpha :: Char -> Int -> Char
 shiftAlpha c key
@@ -21,7 +21,7 @@ shiftDigit :: Char -> Int -> Char
 shiftDigit c key = chr $ (ord '0' + (ord c - ord '0' + key) `mod` 10)
 
 generateKeyStream :: String -> String -> [Int]
-generateKeyStream text key = map keyToShift $ concat $ repeat key
+generateKeyStream _ key = map keyToShift $ concat $ repeat key
   where
     keyToShift k
       | isAlpha k = if isUpper k then ord k - ord 'A' else ord k - ord 'a'

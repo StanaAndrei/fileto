@@ -20,11 +20,13 @@ makeOptBinTree freqMap =
     in buildTree leaves
 
 buildTree :: [OptBinTree] -> OptBinTree
+buildTree []  = error "buildTree: empty list"
 buildTree [t] = t
 buildTree ts  =
   let sorted = sortOn freqOf ts
-      (t1:t2:rest) = sorted
-  in buildTree (merge t1 t2 : rest)
+  in case sorted of
+       t1:t2:rest -> buildTree (merge t1 t2 : rest)
+       _          -> error "buildTree: not enough elements to merge"
 
 merge :: OptBinTree -> OptBinTree -> OptBinTree
 merge t1 t2 = Internal (freqOf t1 + freqOf t2) t1 t2

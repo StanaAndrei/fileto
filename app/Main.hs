@@ -7,20 +7,13 @@ main :: IO ()
 main = do
   args <- getArgs
   case args of
-    ["gen-key"] -> Argacts.printRandLenKey
-    ("gen-key":lenStr) -> Argacts.printRandKey ( read $ lenStr !! 0 :: Int )
-    ("v-enc":"--in-file":infile:"--out-file":outfile:"--key":key:_) -> Argacts.vEncrypt infile outfile key
-    ("v-dec":"--in-file":infile:"--out-file":outfile:"--key":key:_) -> Argacts.vDecrypt infile outfile key
-    -- ("b-enc":"--in-file":infile:"--out-file":outfile:"--key-file":keyfile) -> print infile
-    -- ("b-dec":"--in-file":infile:"--out-file":outfile:"--key-file":keyfile) -> print infile
-    ["--encode", infile] -> huffmanEncode infile
-    ["--decode", infile] -> huffmanDecode infile
-    _ -> printUsage
-
-
-printUsage :: IO ()
-printUsage = putStrLn $ unlines
-  [ "Usage:"
-  -- , "  Encrypt a text:   --encrypt --text \"Hello123\" --out encrypted.txt --key Key123"
-  -- , "  Decrypt a text:   --decrypt --text \"Rijvs456\" --out decrypted.txt --key Key123"
-  ]
+    ["--gen-key"] -> Argacts.printRandLenKey
+    ["--gen-key-mat", matfile] -> Argacts.writeMatrixToFile matfile
+    ("--gen-key":lenStr) -> Argacts.printRandKey ( read $ lenStr !! 0 :: Int )
+    ("--v-enc":"--in-file":infile:"--out-file":outfile:"--key":key:_) -> Argacts.vEncrypt infile outfile key
+    ("--v-dec":"--in-file":infile:"--out-file":outfile:"--key":key:_) -> Argacts.vDecrypt infile outfile key
+    ("--b-enc":"--in-file":infile:"--out-file":outfile:"--key-file":keyfile:_) -> Argacts.bEncrypt infile outfile keyfile
+    ("--b-dec":"--in-file":infile:"--out-file":outfile:"--key-file":keyfile:_) -> Argacts.bDecrypt infile outfile keyfile
+    ["--compress", infile] -> Argacts.huffmanEncode infile
+    ["--extract", infile] -> Argacts.huffmanDecode infile
+    _ -> Argacts.printUsage

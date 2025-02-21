@@ -1,7 +1,5 @@
 module Comp.Defs where
 
-import Data.Word (Word8)
-
 bitsInByte :: Int
 bitsInByte = 8
 

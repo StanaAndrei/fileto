@@ -6,3 +6,11 @@ A simple file utility which enables you to: <br>
 -compress a file using huffman compression and optimal binary trees <br>
 
 For the OOP version of the latter check [this](https://github.com/StanaAndrei/huffman-comp).
+
+## Build
+
+Make sure you have haskell and abal installed. <br>
+Run: 
+```cabal update``` <br>
+```cabal build``` <br> 
+```cabal run fileto -- <args> ``` where "args" are the desired arguments

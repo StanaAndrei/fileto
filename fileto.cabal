@@ -57,3 +57,24 @@ executable fileto
         Comp.BitArr
         Comp.FileUtils
         Comp.OptBinTree
+test-suite fileto-test
+    type:                exitcode-stdio-1.0
+    main-is:            Spec.hs
+    hs-source-dirs:     test
+    build-depends:      base >= 4.7 && < 5
+                      , fileto
+                      , hspec
+                      , QuickCheck
+                      , HUnit
+    default-language:   Haskell2010
+    other-modules: Cip.Beau
+                    Cip.BeauMat
+                    Cip.Vig
+                    Util.Rand
+                    Util.Time
+                    Argacts
+                    Comp.Huffman
+                    Comp.Defs
+                    Comp.BitArr
+                    Comp.FileUtils
+                    Comp.OptBinTree

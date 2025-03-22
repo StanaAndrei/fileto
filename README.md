@@ -9,7 +9,7 @@ For the OOP version of the latter check [this](https://github.com/StanaAndrei/hu
 
 ## Build
 
-Make sure you have haskell and abal installed. <br>
+Make sure you have haskell and cabal installed. <br>
 Run: 
 ```cabal update``` <br>
 ```cabal build``` <br> 
